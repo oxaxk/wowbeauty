@@ -4,6 +4,7 @@ export default function ServicesSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
   const startXRef = useRef<number>(0);
   const currentXRef = useRef<number>(0);
   const isDraggingRef = useRef<boolean>(false);
@@ -68,10 +69,12 @@ export default function ServicesSection() {
   };
 
   const goToSlide = (index: number) => {
-    if (isTransitioning || index === currentIndex) return;
-    setIsTransitioning(true);
+    if (index === currentIndex) return;
     setCurrentIndex(index);
-    setTimeout(() => setIsTransitioning(false), 300);
+    const el = mobileScrollRef.current;
+    if (el) {
+      el.scrollTo({ left: index * el.clientWidth, behavior: 'smooth' });
+    }
   };
 
   // Touch/Mouse handlers for swipe functionality
@@ -118,6 +121,14 @@ export default function ServicesSection() {
         prevSlide();
       }
     }
+  };
+
+  // Mobile scroll handler for snap carousel
+  const handleMobileScroll = () => {
+    const el = mobileScrollRef.current;
+    if (!el) return;
+    const newIndex = Math.round(el.scrollLeft / el.clientWidth);
+    if (newIndex !== currentIndex) setCurrentIndex(newIndex);
   };
 
   // Mouse events
@@ -210,46 +221,43 @@ export default function ServicesSection() {
           {/* Card Container with proper spacing */}
           <div className="w-full px-4 lg:px-20 lg:hidden">
             <div
-              ref={scrollContainerRef}
-              className="w-full transition-all duration-300 ease-out cursor-grab"
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseLeave}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-              onWheel={handleWheel}
-              style={{ cursor: isDraggingRef.current ? 'grabbing' : 'grab' }}
+              ref={mobileScrollRef}
+              className="w-full flex overflow-x-auto scroll-smooth snap-x snap-mandatory space-x-6 px-4"
+              onScroll={handleMobileScroll}
+              style={{ WebkitOverflowScrolling: 'touch' }}
             >
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-[560px] lg:h-[640px] flex flex-col">
-                <div className="relative h-1/2 overflow-hidden">
-                  <img
-                    src={currentService.image}
-                    alt={currentService.title}
-                    className="w-full h-full object-cover object-center"
-                    draggable={false}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="px-6 pt-4 pb-8 lg:px-12 lg:pt-8 lg:pb-12 flex flex-col justify-center h-1/2">
-                  <div className="mb-2 lg:mb-4">
-                    <h3
-                      className="text-xl lg:text-3xl font-bold mb-1 lg:mb-4"
-                      style={{ fontFamily: '"Playfair Display", serif', color: '#4A331F' }}
-                    >
-                      {currentService.title}
-                    </h3>
+              {services.map((svc) => (
+                <div key={svc.title} className="shrink-0 w-[85%] snap-center">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-[560px] flex flex-col">
+                    <div className="relative h-1/2 overflow-hidden">
+                      <img
+                        src={svc.image}
+                        alt={svc.title}
+                        className="w-full h-full object-cover object-center"
+                        draggable={false}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div className="px-6 pt-4 pb-8 flex flex-col justify-center h-1/2">
+                      <div className="mb-2">
+                        <h3
+                          className="text-xl font-bold mb-1"
+                          style={{ fontFamily: '"Playfair Display", serif', color: '#4A331F' }}
+                        >
+                          {svc.title}
+                        </h3>
+                      </div>
+                      <p
+                        className="opacity-80 leading-relaxed text-base"
+                        style={{ fontFamily: 'Inter, sans-serif', color: '#4A331F' }}
+                      >
+                        {svc.description}
+                      </p>
+                    </div>
                   </div>
-                  <p
-                    className="opacity-80 leading-relaxed text-base lg:text-lg"
-                    style={{ fontFamily: 'Inter, sans-serif', color: '#4A331F' }}
-                  >
-                    {currentService.description}
-                  </p>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
 
