@@ -96,10 +96,14 @@ export default function HeroSection() {
       </nav>
 
       {/* Hero Content */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/hero/hero.jpg')"
+          backgroundImage: `url(${
+            typeof window !== "undefined" && window.innerWidth < 768
+              ? "/images/hero/hero-mobile.jpg"
+              : "/images/hero/hero.jpg"
+          })`,
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
