@@ -188,9 +188,9 @@ export default function ServicesSection() {
   const visibleServices = [0, 1, 2].map(i => services[(currentIndex + i) % services.length]);
 
   return (
-    <section id="services" className="py-20" style={{ backgroundColor: '#F4E8D0' }}>
+    <section id="services" className="py-14 lg:py-20" style={{ backgroundColor: '#F4E8D0' }}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 lg:mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: '"Playfair Display", serif', color: '#4A331F' }}>
             Unsere Behandlungen
           </h2>
@@ -228,8 +228,8 @@ export default function ServicesSection() {
             >
               {services.map((svc) => (
                 <div key={svc.title} className="shrink-0 w-[85%] snap-center">
-                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-[560px] flex flex-col">
-                    <div className="relative h-1/2 overflow-hidden">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-[520px] flex flex-col">
+                    <div className="relative h-[60%] overflow-hidden">
                       <img
                         src={svc.image}
                         alt={svc.title}
@@ -239,7 +239,7 @@ export default function ServicesSection() {
                         decoding="async"
                       />
                     </div>
-                    <div className="px-6 pt-4 pb-8 flex flex-col justify-center h-1/2">
+                    <div className="px-6 pt-3 pb-6 flex flex-col justify-center h-[40%]">
                       <div className="mb-2">
                         <h3
                           className="text-xl font-bold mb-1"
