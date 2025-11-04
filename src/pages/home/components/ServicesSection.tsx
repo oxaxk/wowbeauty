@@ -12,44 +12,44 @@ export default function ServicesSection() {
   const services = [
     {
       icon: 'ri-heart-pulse-line',
-      title: 'Kosmetologie / Gesichtspflege',
-      description: 'Reinigung, Hautanalyse, Aquafacial, PRX‑T33, BioRePeel, Peelings nach Hauttyp, Microneedling/RF‑Needling, Hydration & Straffung – individuell kombiniert für ein klares, strahlendes Hautbild',
+      title: 'Kosmetologie',
+      description: 'Aquafacial, PRX‑T33, BioRePeel, Peelings, Microneedling/RF‑Needling – für klare, strahlende Haut',
       image: '/images/services/kosmetik.jpg'
     },
     {
       icon: 'ri-magic-line',
       title: 'Endosphères-Therapie',
-      description: 'Mikrovibrationen zur Lymphdrainage, Entstauung und Hautstraffung; fördert Durchblutung, Detox und Body‑Contouring – angenehm, nicht invasiv',
+      description: 'Mikrovibrationen für Lymphdrainage, Entstauung & Straffung – angenehm und nicht invasiv',
       image: '/images/services/endospheres.jpg'
     },
     {
       icon: 'ri-flashlight-line',
-      title: 'Laser SPARKpro – Dauerhafte Haarentfernung',
-      description: 'Moderne Diodenlaser‑Technologie für alle Hauttypen; sanft dank ICE‑Kühlung, präzise Behandlung einzelner Zonen oder Pakete – mit langanhaltenden Ergebnissen',
+      title: 'Laser SPARKpro',
+      description: 'Diodenlaser mit ICE‑Kühlung; präzise Behandlung einzelner Zonen oder Pakete – langanhaltende Ergebnisse',
       image: '/images/services/laser.jpg'
     },
     {
       icon: 'ri-hand-heart-line',
       title: 'Nagelpflege',
-      description: 'Maniküre & Pediküre (auch parallel), Gellack, Gelverstärkung, Reparatur sowie natürliche und apparative Pflege – hygienisch, präzise, in Trendfarben',
+      description: 'Maniküre & Pediküre, Gellack, Gelverstärkung, Reparatur – hygienisch & präzise',
       image: '/images/services/naegel.jpg'
     },
     {
       icon: 'ri-scissors-line',
       title: 'Haare',
-      description: 'Haarschnitt, Farbe, Blondier‑Techniken (Balayage, AirTouch), Pflegerituale mit HADAT; Barber‑Services für Herren inkl. Konturen & Bart',
+      description: 'Schnitt, Farbe, Balayage/AirTouch; Pflege mit HADAT. Barber‑Services inklusive',
       image: '/images/services/haare.jpg'
     },
     {
       icon: 'ri-eye-line',
       title: 'Augenbrauen & Wimpern',
-      description: 'Brow Lifting & Tint, Formkorrektur und Pflege; Lash Lifting für schwungvolle, natürlich wirkende Wimpern – wacher Blick ohne Mascara',
+      description: 'Brow Lifting & Tint, Formkorrektur; Lash Lifting für einen wachen, natürlichen Blick',
       image: '/images/services/brows-lashes.jpg'
     },
     {
       icon: 'ri-leaf-line',
       title: 'Massage',
-      description: 'Ganzkörper‑, Sport‑ und Anti‑Cellulite‑Massage sowie Nacken‑/Schultermassage; löst Verspannungen, aktiviert die Regeneration und sorgt für tiefe Entspannung',
+      description: 'Ganzkörper‑, Sport‑ & Anti‑Cellulite‑Massage sowie Nacken/Schulter – löst Verspannungen',
       image: '/images/services/massage.jpg'
     }
   ];
