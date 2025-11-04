@@ -95,17 +95,28 @@ export default function HeroSection() {
         </div>
       </nav>
 
-      {/* Hero Content */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${
-            typeof window !== "undefined" && window.innerWidth < 768
-              ? "/images/hero/hero-mobile.jpg"
-              : "/images/hero/hero.jpg"
-          })`,
-        }}
-      >
+      {/* Hero Background Video */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Mobile video (shown < md) */}
+        <video
+          className="block md:hidden absolute inset-0 w-full h-full object-cover"
+          src="/videos/hero-mobile.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+        {/* Desktop video (shown >= md) */}
+        <video
+          className="hidden md:block absolute inset-0 w-full h-full object-cover"
+          src="/videos/hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
       
